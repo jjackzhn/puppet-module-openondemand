@@ -167,6 +167,9 @@
 #   nginx_stage.yml nginx_file_upload_max
 # @param nginx_stage_configs
 #   nginx_stage.yml extra configuration options
+# @param nginx_sudo_target
+#   Target sudo user/group for nginx command
+#   Defaults to ALL
 # @param config_dir_purge
 #   Boolean that sets if ondemand.d should be purged of unmanaged files
 # @param config_source
@@ -328,6 +331,7 @@ class openondemand (
   Hash[Pattern[/^passenger_.+/], Variant[String, Integer]] $nginx_stage_passenger_options = {},
   Optional[Integer] $nginx_stage_nginx_file_upload_max = undef,
   Hash $nginx_stage_configs = {},
+  String $nginx_sudo_target = 'ALL',
 
   # configs
   Boolean $config_dir_purge = true,
